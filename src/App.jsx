@@ -25,7 +25,7 @@ function App() {
   return (
     <div className="py-4 bg-slate-950 h-screen">
             <div className="flex justify-evenly">
-                <h1 className="text-white font-bold text-4xl">Weather App</h1>
+                <h1 className="text-white font-bold text-4xl">BreezeNow 🍃</h1>
                 <Search onLocationSelect={handelLocationSelect} />
             </div>
             { currentWeather && <CurrentWeather data={currentWeather}/>}
