@@ -14,11 +14,14 @@ const Search = ({onLocationSelect}) => {
                 return;
             }
             try {
+                console.log(`Searching for: ${search}`);
                 const response = await axios.get(`${GEO_API_URL}/cities?minPopulation=1000000&namePrefix=${search}`,geoApiOptions);
+                // console.log("API Response:", response.data);
                 setShowResult(true);
                 setResult(response.data.data);
             } catch (error) {
                 console.log(error);
+                setResult([]);
             }
         }
         const debounce = setTimeout(() => {
@@ -28,7 +31,7 @@ const Search = ({onLocationSelect}) => {
     },[search])
 
     const handelCitySelect = (city) => {
-        console.log('Selected:', city);
+        // console.log('Selected:', city);
         setSearch(city.name);
         setShowResult(false);
         onLocationSelect({
@@ -45,7 +48,9 @@ const Search = ({onLocationSelect}) => {
         type="text" 
         className="w-full h-12 bg-slate-300 px-6 rounded-xl focus:outline-none hover:bg-slate-200 transition-colors"
         value={search} 
-        onChange={(e) => setSearch(e.target.value)} 
+        onChange={(e) => {setSearch(e.target.value)
+            // console.log("Search input",e.target.value);
+        }} 
         placeholder='Search for city...'
         />
     </div>

@@ -1,5 +1,3 @@
-
-
 const CurrentWeather = ({data}) => {
   return (
     <div className="container mx-auto px-8 py-8">
